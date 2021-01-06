@@ -6,7 +6,12 @@
     "jest": true
   },
   "parser": "@babel/eslint-parser",
-  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:prettier/recommended"
+  ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -14,7 +19,7 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "react-hooks"],
+  "plugins": ["react", "react-hooks", "prettier"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/prefer-stateless-function": "error",
