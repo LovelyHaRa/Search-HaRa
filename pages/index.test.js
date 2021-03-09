@@ -6,7 +6,8 @@ import Home from '.';
 
 describe('<Home />', () => {
   it('should be render', () => {
-    const { getByText } = render(<Home />);
-    expect(getByText('Search HaRa')).toBeInTheDocument();
+    const { container } = render(<Home />);
+
+    expect(container.firstChild).toHaveClass('search-hara-header');
   });
 });
