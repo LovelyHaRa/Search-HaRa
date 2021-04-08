@@ -8,20 +8,22 @@ const container = css`
   align-items: center;
   width: 100%;
   height: 3rem;
+  padding: 0.5rem 1rem;
   font-family: 'Raleway', sans-serif;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 `;
 
 const brandStyle = css`
-  padding: 1rem;
   .brand-logo {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 `;
 
 const menuStyle = css`
   margin: 0 2rem;
+  padding-top: 0.125rem;
   .menu-item {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 300;
   }
 `;
