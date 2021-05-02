@@ -22,9 +22,23 @@ const brandStyle = css`
 const menuStyle = css`
   margin: 0 2rem;
   padding-top: 0.125rem;
+
   .menu-item {
     font-size: 1rem;
     font-weight: 300;
+
+    &-icon {
+      display: none;
+    }
+
+    @media screen and (max-width: 576px) {
+      &-context {
+        display: none;
+      }
+      &-icon {
+        display: flex;
+      }
+    }
   }
 `;
 
@@ -39,7 +53,16 @@ const Brand = () => (
 const Menu = () => (
   <div css={menuStyle}>
     <Link href="/cocktail">
-      <a className="menu-item">Cocktail</a>
+      <a className="menu-item">
+        <span className="menu-item-context">Cocktail</span>
+        <img
+          className="menu-item-icon"
+          src="/images/icons/cocktail.svg"
+          alt="menu-cocktail"
+          width={24}
+          height={24}
+        />
+      </a>
     </Link>
   </div>
 );

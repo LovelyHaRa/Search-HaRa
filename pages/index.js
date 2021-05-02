@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>SEARCH HARA</title>
+        <title>Search HaRa</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout />
