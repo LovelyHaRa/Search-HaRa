@@ -14,7 +14,12 @@ const titleSection = css`
   justify-content: center;
   align-items: center;
   height: calc(100vh - 3rem);
-  background: #eee;
+  background: #f1f3f5;
+
+  h1 {
+    font-family: 'Open Sans';
+    font-size: 2.5rem;
+  }
 `;
 
 export default function Home() {
