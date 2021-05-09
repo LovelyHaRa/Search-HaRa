@@ -47,7 +47,7 @@ const menuStyle = css`
 const Brand = () => (
   <div css={brandStyle}>
     <Link href="/">
-      <a className="brand-logo">Search HaRa</a>
+      <a className="brand-logo">Cocktail Recipes</a>
     </Link>
   </div>
 );
@@ -56,7 +56,7 @@ const Menu = () => (
   <div css={menuStyle}>
     <Link href="/cocktail">
       <a className="menu-item">
-        <span className="menu-item-context">Cocktail</span>
+        <span className="menu-item-context">Short</span>
         <img
           className="menu-item-icon"
           src="/images/icons/cocktail.svg"

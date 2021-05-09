@@ -7,7 +7,7 @@ describe('<Header />', () => {
   it('should be render', () => {
     const { getByText } = render(<Header />);
 
-    expect(getByText(/Search HaRa/)).toBeInTheDocument();
-    expect(getByText(/Cocktail/)).toBeInTheDocument();
+    expect(getByText(/Cocktail Recipes/)).toBeInTheDocument();
+    expect(getByText(/Short/)).toBeInTheDocument();
   });
 });
