@@ -2,6 +2,7 @@ import React from 'react';
 import { css } from '@emotion/react';
 
 import Layout from '../components/Layout';
+import RecipeItem from '../components/RecipeItem';
 
 const container = css`
   display: flex;
@@ -27,7 +28,7 @@ export default function Home() {
     <Layout>
       <div css={container}>
         <section css={titleSection}>
-          <h1>Find you want it!</h1>
+          <RecipeItem />
         </section>
       </div>
     </Layout>
