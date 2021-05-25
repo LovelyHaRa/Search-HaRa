@@ -2,6 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import { css } from '@emotion/react';
 
+import palette from 'styles/palette';
+
 const container = css`
   position: fixed;
   display: flex;
@@ -10,7 +12,7 @@ const container = css`
   height: 3rem;
   padding: 0.5rem 1rem;
   font-family: 'Raleway', sans-serif;
-  background-color: #f8f9fa;
+  background-color: ${palette.gray[0]};
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   z-index: 10;
 `;
