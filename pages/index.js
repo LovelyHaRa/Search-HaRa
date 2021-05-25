@@ -1,8 +1,10 @@
 import React from 'react';
 import { css } from '@emotion/react';
 
-import Layout from '../components/Layout';
-import RecipeItem from '../components/RecipeItem';
+import palette from 'styles/palette';
+
+import Layout from 'components/Layout';
+import RecipeItem from 'components/RecipeItem';
 
 const container = css`
   display: flex;
@@ -15,7 +17,7 @@ const titleSection = css`
   justify-content: center;
   align-items: center;
   height: calc(100vh - 3rem);
-  background: #f1f3f5;
+  background: ${palette.gray[1]};
 
   h1 {
     font-family: 'Open Sans';

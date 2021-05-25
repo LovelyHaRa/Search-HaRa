@@ -1,14 +1,16 @@
 import { css } from '@emotion/react';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
+import palette from 'styles/palette';
+
 const container = css`
   display: flex;
   flex-direction: column;
   width: 100%;
   padding: 1rem;
-  background: #fff;
+  background: ${palette.light};
   border-radius: 0.5rem;
-  box-shadow: 0px 5px 10px 0px #dee2e6;
+  box-shadow: 0px 5px 10px 0px ${palette.gray[3]};
 `;
 
 const title = css`
@@ -18,7 +20,7 @@ const title = css`
 
   & > span:last-of-type {
     font-size: 0.75rem;
-    color: #495057;
+    color: ${palette.gray[7]};
   }
 `;
 
