@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 
+import { sampleRecipeitem } from 'lib/data';
 import palette from 'styles/palette';
 
 import Layout from 'components/Layout';
@@ -25,14 +26,18 @@ const titleSection = css`
   }
 `;
 
-export default function Home() {
+export default function Home({ item }) {
   return (
     <Layout>
       <div css={container}>
         <section css={titleSection}>
-          <RecipeItem />
+          <RecipeItem item={item} />
         </section>
       </div>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  return { props: { item: sampleRecipeitem } };
 }
