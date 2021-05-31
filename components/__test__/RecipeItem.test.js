@@ -1,10 +1,16 @@
 import { render } from '@testing-library/react';
 
+import { sampleRecipeitem } from 'lib/data';
+
 import RecipeItem from 'components/RecipeItem';
+
+const props = {
+  item: sampleRecipeitem,
+};
 
 describe('<RecipeItem />', () => {
   it('should be render', () => {
-    const { getByText } = render(<RecipeItem />);
+    const { getByText } = render(<RecipeItem {...props} />);
 
     expect(getByText('Martini')).toBeInTheDocument();
     expect(getByText('Gin Based')).toBeInTheDocument();

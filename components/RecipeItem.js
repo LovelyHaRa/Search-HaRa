@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import { getingredientRatio } from 'lib/util';
 
 import palette from 'styles/palette';
 
@@ -65,40 +66,40 @@ const ingredient = css`
   }
 `;
 
-export default function RecipeItem() {
+export default function RecipeItem({ item }) {
+  const ingredientRatio = getingredientRatio(item.ingredientList);
   return (
     <div css={container}>
       <div css={title}>
-        <span>Martini</span>
-        <span>Gin Based</span>
+        <span>{item.name}</span>
+        <span>{`${item.based} Based`}</span>
       </div>
       <div css={content}>
         <div css={imageContainer}>
-          <img src="https://picsum.photos/seed/picsum/200/200" alt="item" />
+          <img src={item.image} alt="item" />
         </div>
         <div css={recipeContainer}>
           <div css={technique}>
-            <span>Stur</span>
+            <span>{item.tech}</span>
           </div>
           <div>
-            <div css={ingredient}>
-              <div>
-                <span>Dry Gin</span>
-                <span>2oz</span>
+            {item.ingredientList.map(({ name, volume, unit }, index) => (
+              <div key={`${name}${volume}${unit}`} css={ingredient}>
+                <div>
+                  <span>{name}</span>
+                  <span>
+                    {volume}
+                    {unit}
+                  </span>
+                </div>
+                <div>
+                  <LinearProgress
+                    variant="determinate"
+                    value={ingredientRatio[index] * 100}
+                  />
+                </div>
               </div>
-              <div>
-                <LinearProgress variant="determinate" value={100} />
-              </div>
-            </div>
-            <div css={ingredient}>
-              <div>
-                <span>Dry Vermouth</span>
-                <span>1/3oz</span>
-              </div>
-              <div>
-                <LinearProgress variant="determinate" value={16.7} />
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
