@@ -6,6 +6,7 @@ import RecipeItem from 'components/RecipeItem';
 
 const props = {
   item: sampleRecipeitem,
+  isLoading: false,
 };
 
 describe('<RecipeItem />', () => {

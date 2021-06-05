@@ -1,8 +1,12 @@
+import React from 'react';
 import { css } from '@emotion/react';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Skeleton from '@material-ui/lab/Skeleton';
+
 import { getingredientRatio } from 'lib/util';
 
 import palette from 'styles/palette';
+import times from 'lodash/times';
 
 const container = css`
   display: flex;
@@ -66,40 +70,79 @@ const ingredient = css`
   }
 `;
 
-export default function RecipeItem({ item }) {
+const progress = (bgColor = palette.gray[4], barColor = palette.gray[6]) => css`
+  &.MuiLinearProgress-colorPrimary {
+    background-color: ${bgColor};
+  }
+  .MuiLinearProgress-barColorPrimary {
+    background-color: ${barColor};
+  }
+`;
+
+export default function RecipeItem({ item, isLoading }) {
   const ingredientRatio = getingredientRatio(item.ingredientList);
   return (
     <div css={container}>
       <div css={title}>
-        <span>{item.name}</span>
-        <span>{`${item.based} Based`}</span>
+        {isLoading ? (
+          <>
+            <Skeleton variant="text" width={80} animation="wave" />
+            <Skeleton variant="text" width={60} animation="wave" />
+          </>
+        ) : (
+          <>
+            <span>{item.name}</span>
+            <span>{`${item.based} Based`}</span>
+          </>
+        )}
       </div>
       <div css={content}>
         <div css={imageContainer}>
-          <img src={item.image} alt="item" />
+          {isLoading ? (
+            <Skeleton variant="rect" width={100} height={100} animate="wave" />
+          ) : (
+            <img src={item.image} alt="item" />
+          )}
         </div>
         <div css={recipeContainer}>
           <div css={technique}>
-            <span>{item.tech}</span>
+            {isLoading ? (
+              <Skeleton variant="text" width={40} animation="wave" />
+            ) : (
+              <span>{item.tech}</span>
+            )}
           </div>
           <div>
-            {item.ingredientList.map(({ name, volume, unit }, index) => (
-              <div key={`${name}${volume}${unit}`} css={ingredient}>
-                <div>
-                  <span>{name}</span>
-                  <span>
-                    {volume}
-                    {unit}
-                  </span>
+            {isLoading &&
+              times(2, (index) => (
+                <div key={index} css={ingredient}>
+                  <div>
+                    <Skeleton variant="text" width={60} animation="wave" />
+                    <Skeleton variant="text" width={20} animation="wave" />
+                  </div>
+                  <div>
+                    <LinearProgress css={progress()} />
+                  </div>
                 </div>
-                <div>
-                  <LinearProgress
-                    variant="determinate"
-                    value={ingredientRatio[index] * 100}
-                  />
+              ))}
+            {!isLoading &&
+              item.ingredientList.map(({ name, volume, unit }, index) => (
+                <div key={`${name}${volume}${unit}`} css={ingredient}>
+                  <div>
+                    <span>{name}</span>
+                    <span>
+                      {volume}
+                      {unit}
+                    </span>
+                  </div>
+                  <div>
+                    <LinearProgress
+                      variant="determinate"
+                      value={ingredientRatio[index] * 100}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>
