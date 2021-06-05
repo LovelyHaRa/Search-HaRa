@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
 import { sampleRecipeitem } from 'lib/data';
@@ -27,11 +27,15 @@ const titleSection = css`
 `;
 
 export default function Home({ item }) {
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => setIsLoading(false), [2000]);
+  }, []);
   return (
     <Layout>
       <div css={container}>
         <section css={titleSection}>
-          <RecipeItem item={item} />
+          <RecipeItem item={item} isLoading={isLoading} />
         </section>
       </div>
     </Layout>
