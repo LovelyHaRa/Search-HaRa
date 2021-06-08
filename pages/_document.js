@@ -16,7 +16,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="icon" href="/favicon.ico" />
-          <title>Search HaRa</title>
+          <title>Cocktail Recipes</title>
         </Head>
         <body>
           <Main />
