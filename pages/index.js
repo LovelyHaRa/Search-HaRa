@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { css } from '@emotion/react';
 
-import { sampleRecipeitem } from 'lib/data';
 import palette from 'styles/palette';
 
 import Layout from 'components/Layout';
-import RecipeItem from 'components/RecipeItem';
 
 const container = css`
   display: flex;
@@ -26,22 +24,14 @@ const titleSection = css`
   }
 `;
 
-export default function Home({ item }) {
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => setIsLoading(false), [2000]);
-  }, []);
+export default function Home() {
   return (
     <Layout>
       <div css={container}>
-        <section css={titleSection}>
-          <RecipeItem item={item} isLoading={isLoading} />
-        </section>
+        <div css={titleSection}>
+          <h1>Main Page</h1>
+        </div>
       </div>
     </Layout>
   );
-}
-
-export async function getStaticProps() {
-  return { props: { item: sampleRecipeitem } };
 }
