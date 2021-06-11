@@ -1,13 +1,12 @@
-export default (req, res) => {
-  res.statusCode = 200;
-  res.json({
-    name: 'Martini',
-    based: 'Gin',
-    image: 'https://picsum.photos/seed/picsum/200/200',
-    tech: 'Stur',
-    ingredientList: [
-      { name: 'Dry Gin', volume: '2', unit: 'oz' },
-      { name: 'Dry Vermouth', volume: '1/3', unit: 'oz' },
-    ],
+import prisma from 'lib/prisma';
+
+export default async (req, res) => {
+  const { id } = req.query;
+
+  const recipe = await prisma.recipe.findUnique({
+    where: { id: parseInt(id, 10) },
+    include: { ingredientList: true },
   });
+  res.statusCode = 200;
+  res.json(recipe);
 };
