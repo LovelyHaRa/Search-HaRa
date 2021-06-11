@@ -5,7 +5,7 @@ import { fetcher } from 'lib/api';
 import Cocktail from './Cocktail';
 
 const CocktailContainer = () => {
-  const { data: item, error } = useSWR('/api/recipes/id', fetcher);
+  const { data: item, error } = useSWR('/api/recipes/1', fetcher);
 
   if (!item) return null;
   return <Cocktail item={item} error={error} />;
