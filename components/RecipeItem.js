@@ -54,8 +54,17 @@ const technique = css`
   }
 `;
 
-const ingredient = css`
+const garnish = css`
   margin-top: 0.25rem;
+  font-size: 0.875rem;
+
+  & > span {
+    color: ${palette.gray[7]};
+  }
+`;
+
+const ingredient = css`
+  margin-top: 0.5rem;
   & + & {
     margin-top: 0.5rem;
   }
@@ -110,6 +119,16 @@ export default function RecipeItem({ item, isLoading }) {
               <Skeleton variant="text" width={40} animation="wave" />
             ) : (
               <span>{item.tech}</span>
+            )}
+          </div>
+          <div css={garnish}>
+            {isLoading && (
+              <Skeleton variant="text" width={40} animation="wave" />
+            )}
+            {!isLoading && item.garnish?.length ? (
+              <span>{item.garnish}</span>
+            ) : (
+              <span>No Garnish</span>
             )}
           </div>
           <div>

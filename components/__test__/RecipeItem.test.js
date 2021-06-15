@@ -17,10 +17,21 @@ describe('<RecipeItem />', () => {
     expect(getByText('Gin Based')).toBeInTheDocument();
 
     expect(getByText('Stur')).toBeInTheDocument();
+    expect(getByText('Olive')).toBeInTheDocument();
 
     expect(getByText('Dry Gin')).toBeInTheDocument();
     expect(getByText('2oz')).toBeInTheDocument();
     expect(getByText('Dry Vermouth')).toBeInTheDocument();
     expect(getByText('1/3oz')).toBeInTheDocument();
+  });
+
+  it('should be render if no garnish', () => {
+    const nextProps = {
+      ...props,
+      item: { ...props.item, garnish: '' },
+    };
+    const { getByText } = render(<RecipeItem {...nextProps} />);
+
+    expect(getByText('No Garnish')).toBeInTheDocument();
   });
 });
