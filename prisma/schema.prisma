@@ -13,6 +13,7 @@ model Recipe {
   based          String
   image          String
   tech           String
+  garnish        String
   ingredientList Ingredient[]
 }
 
