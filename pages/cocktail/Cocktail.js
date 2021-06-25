@@ -6,7 +6,7 @@ import palette from 'styles/palette';
 import Layout from 'components/Layout';
 import RecipeItem from 'components/RecipeItem';
 
-const Cocktail = ({ item, error }) => {
+const Cocktail = ({ recipes, error }) => {
   const container = css`
     display: flex;
     flex-direction: column;
@@ -18,11 +18,16 @@ const Cocktail = ({ item, error }) => {
     justify-content: center;
     align-items: center;
     height: calc(100vh - 3rem);
+    padding: 0 3rem;
     background: ${palette.gray[1]};
 
     h1 {
       font-family: 'Open Sans';
       font-size: 2.5rem;
+    }
+
+    & > div + div {
+      margin: 1.5rem;
     }
   `;
 
@@ -30,7 +35,13 @@ const Cocktail = ({ item, error }) => {
     <Layout>
       <div css={container}>
         <section css={titleSection}>
-          <RecipeItem item={item} isLoading={!item && !error} />
+          {recipes.map((recipe) => (
+            <RecipeItem
+              key={recipe.name}
+              item={recipe}
+              isLoading={!recipes && !error}
+            />
+          ))}
         </section>
       </div>
     </Layout>

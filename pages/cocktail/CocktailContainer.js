@@ -5,10 +5,10 @@ import { fetcher } from 'lib/api';
 import Cocktail from './Cocktail';
 
 const CocktailContainer = () => {
-  const { data: item, error } = useSWR('/api/recipes/2', fetcher);
+  const { data: recipes, error } = useSWR('/api/recipes', fetcher);
 
-  if (!item) return null;
-  return <Cocktail item={item} error={error} />;
+  if (!recipes) return null;
+  return <Cocktail recipes={recipes} error={error} />;
 };
 
 export default CocktailContainer;
