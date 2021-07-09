@@ -17,6 +17,7 @@ describe('<RecipeItem />', () => {
     expect(getByText('Gin Based')).toBeInTheDocument();
 
     expect(getByText('Stur')).toBeInTheDocument();
+    expect(getByText('Martini Glass')).toBeInTheDocument();
     expect(getByText('Olive')).toBeInTheDocument();
 
     expect(getByText('Dry Gin')).toBeInTheDocument();
