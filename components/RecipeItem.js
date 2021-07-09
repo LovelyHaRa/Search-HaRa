@@ -36,8 +36,10 @@ const content = css`
 
 const imageContainer = css`
   display: flex;
-  width: 100px;
-  height: 100px;
+
+  img {
+    width: 100px;
+  }
 `;
 
 const recipeContainer = css`
@@ -51,6 +53,15 @@ const recipeContainer = css`
 const technique = css`
   & > span {
     font-size: 0.875rem;
+  }
+`;
+
+const glass = css`
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+
+  & > span {
+    color: ${palette.gray[7]};
   }
 `;
 
@@ -120,6 +131,12 @@ export default function RecipeItem({ item, isLoading }) {
             ) : (
               <span>{item.tech}</span>
             )}
+          </div>
+          <div css={glass}>
+            {isLoading && (
+              <Skeleton variant="text" width={40} animation="wave" />
+            )}
+            {!isLoading && <span>{item.glass}</span>}
           </div>
           <div css={garnish}>
             {isLoading && (

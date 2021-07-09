@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "database": "prisma studio"
   },
   "dependencies": {
     "@emotion/react": "^11.1.4",
